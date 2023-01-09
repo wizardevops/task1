@@ -1,0 +1,2 @@
+[staging_servers]
+linux1 ansible_host=0 ansible_user=ubuntu ansible_ssh_private_ley_file=/home/ubuntu/.ssh/studyinstance.pem
