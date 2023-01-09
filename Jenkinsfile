@@ -11,10 +11,15 @@ pipeline {
         checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/wizardevops/task1.git']])
       }
     }
+    stage ('Test') {
+      steps {
+        sh "ls -la"
+      }
+    }
     stage ('Docker build') {
       steps {
         script {
-          dockerImage = docker.build registry
+          sh 'docker build -t wizardevops/task1:latest .'
         }
       }
     }
@@ -51,7 +56,9 @@ pipeline {
     }
     stage('Run playbook') {
       steps {
-        sh 'ansible-playbook playbook_deploy_ECR.yaml'
+        script {
+          ansiblePlaybook 'playbook_deploy_ECR.yaml'
+        }
       }
     }
   }
