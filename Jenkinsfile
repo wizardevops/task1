@@ -1,10 +1,9 @@
 pipeline {
   agent any
   environment {
-    dockerImage = ''
-    registry = 'wizardevops/task1'
     registryCredential = 'dockerhub_id'
   }
+  
   stages {
     stage ('Checkout') {
       steps {
@@ -27,7 +26,9 @@ pipeline {
       steps {
         script {
           docker.withRegistry('',registryCredential) {
-            dockerImage.push()
+            sh '''
+              'docker push wizardevops/task1:latest'
+            '''
           }
         }
       }
@@ -50,14 +51,13 @@ pipeline {
     stage ('Docker Run') {
       steps {
         script {
-          sh 'docker run -p 8096:80 --name task1 943775559597.dkr.ecr.eu-central-1.amazonaws.com/task1'
+          sh 'docker run -d -p 8096:80 --name task1 943775559597.dkr.ecr.eu-central-1.amazonaws.com/task1'
         }
       }
     }
     stage('Run playbook') {
       steps {
-        script {
-          ansiblePlaybook 'playbook_deploy_ECR.yaml'
+        sh 'ansible-playbook playbook_deploy_ECR.yaml'
         }
       }
     }
