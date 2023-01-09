@@ -38,8 +38,8 @@ pipeline {
       steps {
         script {
           sh 'aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin 943775559597.dkr.ecr.eu-central-1.amazonaws.com'
-          sh 'docker tag wizardevops/task1:latest 943775559597.dkr.ecr.eu-central-1.amazonaws.com/task1'
-          sh 'docker push 943775559597.dkr.ecr.eu-central-1.amazonaws.com/task1'
+          sh 'docker tag wizardevops/task1:latest 943775559597.dkr.ecr.eu-central-1.amazonaws.com/task1:v1'
+          sh 'docker push 943775559597.dkr.ecr.eu-central-1.amazonaws.com/task1:v1'
         }
       }
     }
@@ -52,7 +52,7 @@ pipeline {
     stage ('Docker Run') {
       steps {
         script {
-          sh 'docker run -d -p 8096:80 --name task1 943775559597.dkr.ecr.eu-central-1.amazonaws.com/task1'
+          sh 'docker run -d -p 8096:80 --name task1 943775559597.dkr.ecr.eu-central-1.amazonaws.com/task1:v1'
         }
       }
     }
