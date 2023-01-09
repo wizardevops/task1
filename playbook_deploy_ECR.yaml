@@ -8,7 +8,7 @@
       command: docker pull 943775559597.dkr.ecr.eu-central-1.amazonaws.com/task1:latest
 
     - name: delete previous Container
-      command: docker container prune
+      command: docker container prune -f
 
     - name: docker run on servers
-      command: docker run -p 8096:80 --name task1 943775559597.dkr.ecr.eu-central-1.amazonaws.com/task1:latest
+      command: docker run -d -p 8096:80 --name task1 943775559597.dkr.ecr.eu-central-1.amazonaws.com/task1:latest
