@@ -27,7 +27,9 @@ pipeline {
       steps {
         script {
           docker.withRegistry('',registryCredential) {
-            dockerImage.push()
+            sh '''
+              docker push wizardevops/task1:latest
+            '''
           }
         }
       }
