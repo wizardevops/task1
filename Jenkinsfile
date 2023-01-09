@@ -1,5 +1,6 @@
 pipeline {
   agent any
+  
   environment {
     registryCredential = 'dockerhub_id'
   }
@@ -58,7 +59,6 @@ pipeline {
     stage('Run playbook') {
       steps {
         sh 'ansible-playbook playbook_deploy_ECR.yaml'
-        }
       }
     }
   }
