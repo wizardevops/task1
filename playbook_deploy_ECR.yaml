@@ -5,10 +5,10 @@
 
   tasks:
     - name: docker pull image:latest
-      command: docker pull 943775559597.dkr.ecr.eu-central-1.amazonaws.com/task1
+      command: docker pull 943775559597.dkr.ecr.eu-central-1.amazonaws.com/task1:latest
 
     - name: delete previous Container
       command: docker container prune
 
     - name: docker run on servers
-      command: docker run -p 8096:80 --name task1 943775559597.dkr.ecr.eu-central-1.amazonaws.com/task1
+      command: docker run -p 8096:80 --name task1 943775559597.dkr.ecr.eu-central-1.amazonaws.com/task1:latest
