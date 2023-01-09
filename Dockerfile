@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:20.04
 
 ENV index /var/www/html/index.html
 ENV usr_share_index /usr/share/nginx/html/index.html
