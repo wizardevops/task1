@@ -19,7 +19,7 @@ pipeline {
     stage ('Docker build') {
       steps {
         script {
-          sh '-S docker build -t wizardevops/task1:latest .'
+          sh 'docker build -t wizardevops/task1:latest .'
         }
       }
     }
