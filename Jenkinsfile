@@ -58,7 +58,7 @@ pipeline {
     }
     stage('Run playbook') {
       steps {
-          ansiblePlaybook 'playbook_deploy_ECR.yaml'
+          sh 'ansible-playbook playbook_deploy_ECR.yaml'
       }
     }
   }
