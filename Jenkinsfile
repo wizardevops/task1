@@ -2,6 +2,8 @@ pipeline {
   agent any
   
   environment {
+    dockerImage = ''
+    registry = 'wizardevops/task1'
     registryCredential = 'dockerhub_id'
   }
   
@@ -18,9 +20,7 @@ pipeline {
     }
     stage ('Docker build') {
       steps {
-        script {
-          sh 'docker build -t wizardevops/task1:latest .'
-        }
+        sh 'docker build -t wizardevops/task1:latest .'
       }
     }
     stage('Docker Push') {
@@ -28,7 +28,7 @@ pipeline {
         script {
           docker.withRegistry('',registryCredential) {
             sh '''
-              'docker push wizardevops/task1:latest'
+              docker push wizardevops/task1:latest
             '''
           }
         }
