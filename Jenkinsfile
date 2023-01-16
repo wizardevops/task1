@@ -58,7 +58,7 @@ pipeline {
     }
     stage('Run playbook') {
       steps {
-        sh 'sudo su'
+        sh 'ls -l'
         sh 'ansible-playbook playbook_deploy_ECR.yaml'
       }
     }
