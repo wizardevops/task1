@@ -1,2 +1,2 @@
 [staging_servers]
-linux1 ansible_host=3.69.54.80 ansible_user=ubuntu ansible_ssh_private_key_file=/home/ubuntu/studyinstance.pem
+3.69.54.80 ansible_user=ubuntu
